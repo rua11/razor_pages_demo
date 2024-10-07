@@ -1,12 +1,6 @@
 ﻿@page
 @model razor_demo.Pages.OfitCategoryViews.EditModel
 
-@{
-    ViewData["Title"] = "Edit";
-}
-
-<h1>Edit</h1>
-
 <h4>OfitCategory</h4>
 <hr />
 <div class="row">
@@ -19,24 +13,14 @@
                 <span asp-validation-for="OfitCategory.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="OfitCategory.CategoryType" class="control-label"></label>
-                <input asp-for="OfitCategory.CategoryType" class="form-control" />
-                <span asp-validation-for="OfitCategory.CategoryType" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OfitCategory.Sequence" class="control-label"></label>
-                <input asp-for="OfitCategory.Sequence" class="form-control" />
-                <span asp-validation-for="OfitCategory.Sequence" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OfitCategory.ParentPath" class="control-label"></label>
-                <input asp-for="OfitCategory.ParentPath" class="form-control" />
-                <span asp-validation-for="OfitCategory.ParentPath" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="OfitCategory.Depth" class="control-label"></label>
                 <input asp-for="OfitCategory.Depth" class="form-control" />
                 <span asp-validation-for="OfitCategory.Depth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfitCategory.Description" class="control-label"></label>
+                <input asp-for="OfitCategory.Description" class="form-control" />
+                <span asp-validation-for="OfitCategory.Description" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
@@ -44,26 +28,20 @@
                 </label>
             </div>
             <div class="form-group">
-                <label asp-for="OfitCategory.Description" class="control-label"></label>
-                <input asp-for="OfitCategory.Description" class="form-control" />
-                <span asp-validation-for="OfitCategory.Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="OfitCategory.ParentId" class="control-label"></label>
-                <select asp-for="OfitCategory.ParentId" class="form-control" asp-items="ViewBag.ParentId"></select>
+                <select asp-for="OfitCategory.ParentId" class="form-control" asp-items="ViewBag.ParentId">
+                    <option value="">-- None --</option> <!-- Option for no selection -->
+                </select>
                 <span asp-validation-for="OfitCategory.ParentId" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="OfitCategory.CategoryType" class="control-label"></label>
+                <select asp-for="OfitCategory.CategoryType" class="form-control" asp-items="Model.CategoryTypes">
+                    <option value="">-- None --</option> <!-- Option for no selection -->
+                </select>
+                <span asp-validation-for="OfitCategory.CategoryType" class="text-danger"></span>
+            </div>
             <input type="hidden" asp-for="OfitCategory.Id" />
-            <div class="form-group">
-                <label asp-for="OfitCategory.CreateDate" class="control-label"></label>
-                <input asp-for="OfitCategory.CreateDate" class="form-control" />
-                <span asp-validation-for="OfitCategory.CreateDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OfitCategory.WriteDate" class="control-label"></label>
-                <input asp-for="OfitCategory.WriteDate" class="form-control" />
-                <span asp-validation-for="OfitCategory.WriteDate" class="text-danger"></span>
-            </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

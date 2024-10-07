@@ -93,8 +93,9 @@ namespace razor_demo.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CategoryType")
-                        .HasColumnType("varchar")
-                        .HasColumnName("category_type1")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("category_type")
                         .HasComment("Category Type");
 
                     b.Property<DateTime?>("CreateDate")
@@ -131,15 +132,6 @@ namespace razor_demo.Migrations
                         .HasColumnType("varchar")
                         .HasColumnName("parent_path")
                         .HasComment("Parent Path");
-
-                    b.Property<int?>("Sequence")
-                        .HasColumnType("integer")
-                        .HasColumnName("sequence")
-                        .HasComment("Sequence");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<DateTime?>("WriteDate")
                         .HasColumnType("timestamp without time zone")
@@ -240,6 +232,16 @@ namespace razor_demo.Migrations
                         .HasColumnName("description")
                         .HasComment("Description");
 
+                    b.Property<string>("File")
+                        .HasColumnType("varchar")
+                        .HasColumnName("file")
+                        .HasComment("File");
+
+                    b.Property<byte[]>("ImageData")
+                        .HasColumnType("bytea")
+                        .HasColumnName("image_data")
+                        .HasComment("Image Data");
+
                     b.Property<string>("InternalCode")
                         .IsRequired()
                         .HasColumnType("varchar")
@@ -262,6 +264,11 @@ namespace razor_demo.Migrations
                         .HasColumnType("varchar")
                         .HasColumnName("name")
                         .HasComment("Name");
+
+                    b.Property<byte[]>("QrCodeData")
+                        .HasColumnType("bytea")
+                        .HasColumnName("qr_code_data")
+                        .HasComment("QR Code Data");
 
                     b.Property<DateTime?>("WriteDate")
                         .HasColumnType("timestamp without time zone")

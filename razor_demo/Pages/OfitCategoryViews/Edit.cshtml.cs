@@ -21,7 +21,7 @@ namespace razor_demo.Pages.OfitCategoryViews
 
         [BindProperty]
         public OfitCategory OfitCategory { get; set; } = default!;
-
+        public SelectList CategoryTypes { get; set; }
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -30,12 +30,13 @@ namespace razor_demo.Pages.OfitCategoryViews
             }
 
             var ofitcategory =  await _context.OfitCategory.FirstOrDefaultAsync(m => m.Id == id);
+            CategoryTypes = new SelectList(Enum.GetValues(typeof(CategoryType1)));
             if (ofitcategory == null)
             {
                 return NotFound();
             }
             OfitCategory = ofitcategory;
-           ViewData["ParentId"] = new SelectList(_context.OfitCategory, "Id", "Name");
+            ViewData["ParentId"] = new SelectList(_context.OfitCategory, "Id", "Name");
             return Page();
         }
 

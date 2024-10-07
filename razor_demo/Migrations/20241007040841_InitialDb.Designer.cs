@@ -12,8 +12,8 @@ using razor_demo.Data;
 namespace razor_demo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241004070118_CreateDatadase15")]
-    partial class CreateDatadase15
+    [Migration("20241007040841_InitialDb")]
+    partial class InitialDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -96,7 +96,8 @@ namespace razor_demo.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CategoryType")
-                        .HasColumnType("varchar")
+                        .IsRequired()
+                        .HasColumnType("text")
                         .HasColumnName("category_type")
                         .HasComment("Category Type");
 
@@ -134,11 +135,6 @@ namespace razor_demo.Migrations
                         .HasColumnType("varchar")
                         .HasColumnName("parent_path")
                         .HasComment("Parent Path");
-
-                    b.Property<int?>("Sequence")
-                        .HasColumnType("integer")
-                        .HasColumnName("sequence")
-                        .HasComment("Sequence");
 
                     b.Property<DateTime?>("WriteDate")
                         .HasColumnType("timestamp without time zone")
@@ -239,6 +235,16 @@ namespace razor_demo.Migrations
                         .HasColumnName("description")
                         .HasComment("Description");
 
+                    b.Property<string>("File")
+                        .HasColumnType("varchar")
+                        .HasColumnName("file")
+                        .HasComment("File");
+
+                    b.Property<byte[]>("ImageData")
+                        .HasColumnType("bytea")
+                        .HasColumnName("image_data")
+                        .HasComment("Image Data");
+
                     b.Property<string>("InternalCode")
                         .IsRequired()
                         .HasColumnType("varchar")
@@ -261,6 +267,11 @@ namespace razor_demo.Migrations
                         .HasColumnType("varchar")
                         .HasColumnName("name")
                         .HasComment("Name");
+
+                    b.Property<byte[]>("QrCodeData")
+                        .HasColumnType("bytea")
+                        .HasColumnName("qr_code_data")
+                        .HasComment("QR Code Data");
 
                     b.Property<DateTime?>("WriteDate")
                         .HasColumnType("timestamp without time zone")
@@ -543,7 +554,7 @@ namespace razor_demo.Migrations
                     b.HasOne("razor_demo.Data.OfitCategory", "OfitCategory")
                         .WithMany("OfitCrops")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("ofit_tool_category_id_fkey");
 
@@ -555,7 +566,7 @@ namespace razor_demo.Migrations
                     b.HasOne("razor_demo.Data.OfitCategory", "OfitCategory")
                         .WithMany("OfitMaterials")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("ofit_material_category_id_fkey");
 
@@ -567,7 +578,7 @@ namespace razor_demo.Migrations
                     b.HasOne("razor_demo.Data.OfitCategory", "OfitCategory")
                         .WithMany("OfitPartners")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .HasConstraintName("ofit_tool_category_id_fkey");
 
                     b.Navigation("OfitCategory");
@@ -578,7 +589,7 @@ namespace razor_demo.Migrations
                     b.HasOne("razor_demo.Data.OfitCategory", "OfitCategory")
                         .WithMany("OfitProducts")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("ofit_tool_category_id_fkey");
 
@@ -590,7 +601,7 @@ namespace razor_demo.Migrations
                     b.HasOne("razor_demo.Data.OfitCategory", "OfitCategory")
                         .WithMany("OfitTools")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("ofit_tool_category_id_fkey");
 
@@ -602,7 +613,7 @@ namespace razor_demo.Migrations
                     b.HasOne("razor_demo.Data.OfitCategory", "OfitCategory")
                         .WithMany("OfitUnits")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("ofit_tool_category_id_fkey");
 

@@ -1,12 +1,6 @@
 ﻿@page
 @model razor_demo.Pages.OfitMaterialViews.DetailsModel
 
-@{
-    ViewData["Title"] = "Details";
-}
-
-<h1>Details</h1>
-
 <div>
     <h4>OfitMaterial</h4>
     <hr />
@@ -46,6 +40,24 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.OfitMaterial.OfitCategory.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfitMaterial.ImageData)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfitMaterial.ImageData)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfitMaterial.QrCodeData)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfitMaterial.QrCodeData)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfitMaterial.File)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfitMaterial.File)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.OfitMaterial.CreateDate)

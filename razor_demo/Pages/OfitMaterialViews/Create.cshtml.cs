@@ -20,16 +20,32 @@ namespace razor_demo.Pages.OfitMaterialViews
 
         public IActionResult OnGet()
         {
-        ViewData["CategoryId"] = new SelectList(_context.OfitCategory, "Id", "Name");
+            ViewData["CategoryId"] = new SelectList(_context.OfitCategory, "Id", "Name");
             return Page();
         }
 
         [BindProperty]
         public OfitMaterial OfitMaterial { get; set; } = default!;
 
-        // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
+            var checkName = _context.OfitMaterial.Any(x => x.Name == OfitMaterial.Name);
+                if (checkName)
+            {
+                ModelState.AddModelError("OfitMaterial.Name", "Name matetial already exists");
+            }
+            var internalCode = _context.OfitMaterial.Any(x => x.InternalCode == OfitMaterial.InternalCode);
+            if (internalCode)
+            {
+                ModelState.AddModelError("OfitMaterial.InternalCode", "Internal Code already exists");
+            }
+            var materialCode = _context.OfitMaterial.Any(x => x.MaterialCode == OfitMaterial.MaterialCode);
+            if (materialCode)
+            {
+                ModelState.AddModelError("OfitMaterial.MaterialCode", "Material Code already exists");
+            }
+
+
             if (!ModelState.IsValid)
             {
                 return Page();

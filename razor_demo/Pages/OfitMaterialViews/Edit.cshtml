@@ -1,12 +1,6 @@
 ﻿@page
 @model razor_demo.Pages.OfitMaterialViews.EditModel
 
-@{
-    ViewData["Title"] = "Edit";
-}
-
-<h1>Edit</h1>
-
 <h4>OfitMaterial</h4>
 <hr />
 <div class="row">
@@ -42,6 +36,21 @@
                 <label asp-for="OfitMaterial.CategoryId" class="control-label"></label>
                 <select asp-for="OfitMaterial.CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
                 <span asp-validation-for="OfitMaterial.CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfitMaterial.ImageData" class="control-label"></label>
+                <input asp-for="OfitMaterial.ImageData" class="form-control" />
+                <span asp-validation-for="OfitMaterial.ImageData" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfitMaterial.QrCodeData" class="control-label"></label>
+                <input asp-for="OfitMaterial.QrCodeData" class="form-control" />
+                <span asp-validation-for="OfitMaterial.QrCodeData" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfitMaterial.File" class="control-label"></label>
+                <input asp-for="OfitMaterial.File" class="form-control" />
+                <span asp-validation-for="OfitMaterial.File" class="text-danger"></span>
             </div>
             <input type="hidden" asp-for="OfitMaterial.Id" />
             <div class="form-group">

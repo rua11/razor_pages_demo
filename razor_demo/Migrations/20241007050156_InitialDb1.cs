@@ -5,7 +5,7 @@
 namespace razor_demo.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateDatadase14 : Migration
+    public partial class InitialDb1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
