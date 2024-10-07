@@ -14,8 +14,8 @@ namespace razor_demo.Data
 
         [Column("name", TypeName = "varchar")]
         [Comment("Name")]
-        [Required(ErrorMessage = "Hãy nhập tên đi.")]
-        public string Name { get; set; } = null!;
+        [Required(ErrorMessage = "Bạn chưa nhập tên Danh Mục.")]
+        public required string Name { get; set; } = null!;
 
         [Column("category_type1", TypeName = "varchar")]
         [Comment("Category Type")]
