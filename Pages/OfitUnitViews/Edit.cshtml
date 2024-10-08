@@ -1,0 +1,75 @@
+﻿@page
+@model razor_demo.Pages.OfitUnitViews.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>OfitUnit</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="OfitUnit.Name" class="control-label"></label>
+                <input asp-for="OfitUnit.Name" class="form-control" />
+                <span asp-validation-for="OfitUnit.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfitUnit.Notation" class="control-label"></label>
+                <input asp-for="OfitUnit.Notation" class="form-control" />
+                <span asp-validation-for="OfitUnit.Notation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfitUnit.Description" class="control-label"></label>
+                <input asp-for="OfitUnit.Description" class="form-control" />
+                <span asp-validation-for="OfitUnit.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="OfitUnit.DefaultUnit" /> @Html.DisplayNameFor(model => model.OfitUnit.DefaultUnit)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="OfitUnit.IsActive" /> @Html.DisplayNameFor(model => model.OfitUnit.IsActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfitUnit.Convert" class="control-label"></label>
+                <input asp-for="OfitUnit.Convert" class="form-control" />
+                <span asp-validation-for="OfitUnit.Convert" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfitUnit.CategoryId" class="control-label"></label>
+                <select asp-for="OfitUnit.CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                <span asp-validation-for="OfitUnit.CategoryId" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="OfitUnit.Id" />
+            <div class="form-group">
+                <label asp-for="OfitUnit.CreateDate" class="control-label"></label>
+                <input asp-for="OfitUnit.CreateDate" class="form-control" />
+                <span asp-validation-for="OfitUnit.CreateDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfitUnit.WriteDate" class="control-label"></label>
+                <input asp-for="OfitUnit.WriteDate" class="form-control" />
+                <span asp-validation-for="OfitUnit.WriteDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

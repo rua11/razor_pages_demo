@@ -1,0 +1,84 @@
+﻿@page
+@model razor_demo.Pages.OfitUnitViews.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OfitUnit[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OfitUnit[0].Notation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OfitUnit[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OfitUnit[0].DefaultUnit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OfitUnit[0].IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OfitUnit[0].Convert)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OfitUnit[0].OfitCategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OfitUnit[0].CreateDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OfitUnit[0].WriteDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.OfitUnit) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DefaultUnit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Convert)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OfitCategory.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WriteDate)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

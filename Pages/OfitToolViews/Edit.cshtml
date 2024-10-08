@@ -1,0 +1,70 @@
+﻿@page
+@model razor_demo.Pages.OfitToolViews.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>OfitTool</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="OfitTool.Name" class="control-label"></label>
+                <input asp-for="OfitTool.Name" class="form-control" />
+                <span asp-validation-for="OfitTool.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfitTool.ToolCode" class="control-label"></label>
+                <input asp-for="OfitTool.ToolCode" class="form-control" />
+                <span asp-validation-for="OfitTool.ToolCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfitTool.InternalCode" class="control-label"></label>
+                <input asp-for="OfitTool.InternalCode" class="form-control" />
+                <span asp-validation-for="OfitTool.InternalCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfitTool.Description" class="control-label"></label>
+                <input asp-for="OfitTool.Description" class="form-control" />
+                <span asp-validation-for="OfitTool.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="OfitTool.IsActive" /> @Html.DisplayNameFor(model => model.OfitTool.IsActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfitTool.CategoryId" class="control-label"></label>
+                <select asp-for="OfitTool.CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                <span asp-validation-for="OfitTool.CategoryId" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="OfitTool.Id" />
+            <div class="form-group">
+                <label asp-for="OfitTool.CreateDate" class="control-label"></label>
+                <input asp-for="OfitTool.CreateDate" class="form-control" />
+                <span asp-validation-for="OfitTool.CreateDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfitTool.WriteDate" class="control-label"></label>
+                <input asp-for="OfitTool.WriteDate" class="form-control" />
+                <span asp-validation-for="OfitTool.WriteDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

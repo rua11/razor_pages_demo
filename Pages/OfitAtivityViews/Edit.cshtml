@@ -1,0 +1,75 @@
+﻿@page
+@model razor_demo.Pages.OfitAtivityViews.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>OfitActivity</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="OfitActivity.Name" class="control-label"></label>
+                <input asp-for="OfitActivity.Name" class="form-control" />
+                <span asp-validation-for="OfitActivity.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfitActivity.Description" class="control-label"></label>
+                <input asp-for="OfitActivity.Description" class="form-control" />
+                <span asp-validation-for="OfitActivity.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="OfitActivity.IsActive" /> @Html.DisplayNameFor(model => model.OfitActivity.IsActive)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="OfitActivity.IsFarmerActivity" /> @Html.DisplayNameFor(model => model.OfitActivity.IsFarmerActivity)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="OfitActivity.IsHarvesting" /> @Html.DisplayNameFor(model => model.OfitActivity.IsHarvesting)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfitActivity.Sequence" class="control-label"></label>
+                <input asp-for="OfitActivity.Sequence" class="form-control" />
+                <span asp-validation-for="OfitActivity.Sequence" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfitActivity.DisplayType" class="control-label"></label>
+                <input asp-for="OfitActivity.DisplayType" class="form-control" />
+                <span asp-validation-for="OfitActivity.DisplayType" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="OfitActivity.Id" />
+            <div class="form-group">
+                <label asp-for="OfitActivity.CreateDate" class="control-label"></label>
+                <input asp-for="OfitActivity.CreateDate" class="form-control" />
+                <span asp-validation-for="OfitActivity.CreateDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfitActivity.WriteDate" class="control-label"></label>
+                <input asp-for="OfitActivity.WriteDate" class="form-control" />
+                <span asp-validation-for="OfitActivity.WriteDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
