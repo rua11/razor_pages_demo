@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Drawing;
 
 namespace razor_demo.Data
 {
@@ -8,22 +9,14 @@ namespace razor_demo.Data
     [Table("ofit_category")]
     [Comment("Category Management")]
     public class OfitCategory : BaseModel
-        {
-            //public int CompanyId { get; set; }
-            //public bool IsFixed { get; set; }
+    {
+        //public int CompanyId { get; set; }
+        //public bool IsFixed { get; set; }
 
         [Column("name", TypeName = "varchar")]
         [Comment("Name")]
-        [Required(ErrorMessage = "Hãy nhập tên đi.")]
-        public string Name { get; set; } = null!;
-
-        [Column("category_type1", TypeName = "varchar")]
-        [Comment("Category Type")]
-        public string? CategoryType { get; set; }
-
-        [Column("sequence")]
-        [Comment("Sequence")]
-        public int? Sequence { get; set; }
+        [Required(ErrorMessage = "Bạn chưa nhập tên Danh Mục.")]
+        public required string Name { get; set; } = null!;
 
         [Column("parent_path", TypeName = "varchar")]
         [Comment("Parent Path")]
@@ -41,7 +34,7 @@ namespace razor_demo.Data
         [Comment("Description")]
         public string? Description { get; set; }
 
-           
+      
 
         [Column("parent_id")]
         [Comment("Parent")]
@@ -56,14 +49,19 @@ namespace razor_demo.Data
         public ICollection<OfitPartner> OfitPartners { get; set; } = new List<OfitPartner>();
 
         // Selection field for Category Type
-        public CategoryType1 Type { get; set; }
+        [Column("category_type")]
+        [Comment("Category Type")]
+        public CategoryType1 CategoryType { get; set; }
     }
 
     public enum CategoryType1
     {
-        Mèo,   // 0
-        Gà,   // 1
-        Chó      // 2
+        Material,   // 0
+        Actiity,    // 1
+        Product,   // 2
+        Tool,   // 3
+        Crop,// 4
+        Unit,// 5
     }
 
 }

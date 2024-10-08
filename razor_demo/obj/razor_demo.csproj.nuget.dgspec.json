@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\.net\\razor_demo\\razor_demo\\razor_demo\\razor_demo.csproj": {}
+    "D:\\ASP .NET\\RazerPage\\razor_pages_demo\\razor_demo\\razor_demo.csproj": {}
   },
   "projects": {
-    "D:\\.net\\razor_demo\\razor_demo\\razor_demo\\razor_demo.csproj": {
+    "D:\\ASP .NET\\RazerPage\\razor_pages_demo\\razor_demo\\razor_demo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\.net\\razor_demo\\razor_demo\\razor_demo\\razor_demo.csproj",
+        "projectUniqueName": "D:\\ASP .NET\\RazerPage\\razor_pages_demo\\razor_demo\\razor_demo.csproj",
         "projectName": "razor_demo",
-        "projectPath": "D:\\.net\\razor_demo\\razor_demo\\razor_demo\\razor_demo.csproj",
-        "packagesPath": "C:\\Users\\NIC GROUP\\.nuget\\packages\\",
-        "outputPath": "D:\\.net\\razor_demo\\razor_demo\\razor_demo\\obj\\",
+        "projectPath": "D:\\ASP .NET\\RazerPage\\razor_pages_demo\\razor_demo\\razor_demo.csproj",
+        "packagesPath": "C:\\Users\\trann\\.nuget\\packages\\",
+        "outputPath": "D:\\ASP .NET\\RazerPage\\razor_pages_demo\\razor_demo\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\NIC GROUP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\trann\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

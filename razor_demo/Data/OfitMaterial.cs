@@ -43,7 +43,17 @@ namespace razor_demo.Data
         public int CategoryId { get; set; } // Required foreign key property
         public OfitCategory? OfitCategory { get; set; } // Required reference navigation to principal
 
-       
+        [Column("image_data", TypeName = "bytea")]
+        [Comment("Image Data")]
+        public byte[]? ImageData { get; set; }
+
+        [Column("qr_code_data", TypeName = "bytea")]
+        [Comment("QR Code Data")]
+        public byte[]? QrCodeData { get; set; }
+
+        [Column("file", TypeName = "varchar")]
+        [Comment("File")]
+        public byte[]? File { get; set; }
     }
 
 

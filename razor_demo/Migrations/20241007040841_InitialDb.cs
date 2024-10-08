@@ -7,11 +7,33 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace razor_demo.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateDatadase12 : Migration
+    public partial class InitialDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "ofit_activity",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    name = table.Column<string>(type: "varchar(10)", nullable: false, comment: "Name"),
+                    description = table.Column<string>(type: "varchar", nullable: true, comment: "Description"),
+                    is_active = table.Column<bool>(type: "boolean", nullable: false, comment: "Actived"),
+                    is_farmer_activity = table.Column<bool>(type: "boolean", nullable: false, comment: "Is Farmer Activity"),
+                    is_harvesting = table.Column<bool>(type: "boolean", nullable: false, comment: "Is Harvesting"),
+                    sequence = table.Column<int>(type: "integer", nullable: true, comment: "Sequence"),
+                    display_type = table.Column<int>(type: "integer", nullable: true, comment: "Display Type"),
+                    create_date = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    write_date = table.Column<DateTime>(type: "timestamp without time zone", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ofit_activity", x => x.id);
+                },
+                comment: "Activity Management");
+
             migrationBuilder.CreateTable(
                 name: "ofit_category",
                 columns: table => new
@@ -19,13 +41,12 @@ namespace razor_demo.Migrations
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     name = table.Column<string>(type: "varchar", nullable: false, comment: "Name"),
-                    category_type = table.Column<string>(type: "varchar", nullable: true, comment: "Category Type"),
-                    sequence = table.Column<int>(type: "integer", nullable: true, comment: "Sequence"),
                     parent_path = table.Column<string>(type: "varchar", nullable: true, comment: "Parent Path"),
                     depth = table.Column<int>(type: "integer", nullable: true, comment: "Depth"),
-                    is_active = table.Column<bool>(type: "boolean", nullable: false, comment: "Actived"),
                     description = table.Column<string>(type: "varchar", nullable: true, comment: "Description"),
+                    is_active = table.Column<bool>(type: "boolean", nullable: false, comment: "Actived"),
                     parent_id = table.Column<int>(type: "integer", nullable: true, comment: "Parent"),
+                    category_type = table.Column<string>(type: "text", nullable: false, comment: "Category Type"),
                     create_date = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
                     write_date = table.Column<DateTime>(type: "timestamp without time zone", nullable: true)
                 },
@@ -37,7 +58,7 @@ namespace razor_demo.Migrations
                         column: x => x.parent_id,
                         principalTable: "ofit_category",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 },
                 comment: "Category Management");
 
@@ -64,7 +85,7 @@ namespace razor_demo.Migrations
                         column: x => x.category_id,
                         principalTable: "ofit_category",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 },
                 comment: "Crop Management");
 
@@ -80,6 +101,9 @@ namespace razor_demo.Migrations
                     description = table.Column<string>(type: "varchar", nullable: true, comment: "Description"),
                     is_active = table.Column<bool>(type: "boolean", nullable: false, comment: "Actived"),
                     category_id = table.Column<int>(type: "integer", nullable: false, comment: "Category"),
+                    image_data = table.Column<byte[]>(type: "bytea", nullable: true, comment: "Image Data"),
+                    qr_code_data = table.Column<byte[]>(type: "bytea", nullable: true, comment: "QR Code Data"),
+                    file = table.Column<string>(type: "varchar", nullable: true, comment: "File"),
                     create_date = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
                     write_date = table.Column<DateTime>(type: "timestamp without time zone", nullable: true)
                 },
@@ -91,7 +115,7 @@ namespace razor_demo.Migrations
                         column: x => x.category_id,
                         principalTable: "ofit_category",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 },
                 comment: "Material Management");
 
@@ -121,7 +145,7 @@ namespace razor_demo.Migrations
                         column: x => x.category_id,
                         principalTable: "ofit_category",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 },
                 comment: "Partner Management");
 
@@ -147,7 +171,7 @@ namespace razor_demo.Migrations
                         column: x => x.category_id,
                         principalTable: "ofit_category",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 },
                 comment: "Product Management");
 
@@ -174,7 +198,7 @@ namespace razor_demo.Migrations
                         column: x => x.category_id,
                         principalTable: "ofit_category",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 },
                 comment: "Tool Management");
 
@@ -202,7 +226,7 @@ namespace razor_demo.Migrations
                         column: x => x.category_id,
                         principalTable: "ofit_category",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 },
                 comment: "Unit Management");
 
@@ -250,6 +274,9 @@ namespace razor_demo.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "ofit_activity");
+
             migrationBuilder.DropTable(
                 name: "ofit_crop");
 
