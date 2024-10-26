@@ -1,12 +1,6 @@
 ﻿@page
 @model razor_demo.Pages.OfitMaterialViews.CreateModel
 
-@{
-    ViewData["Title"] = "Create";
-}
-
-<h1>Create</h1>
-
 <h4>OfitMaterial</h4>
 <hr />
 <div class="row">
@@ -33,24 +27,40 @@
                 <input asp-for="OfitMaterial.Description" class="form-control" />
                 <span asp-validation-for="OfitMaterial.Description" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="OfitMaterial.IsActive" /> @Html.DisplayNameFor(model => model.OfitMaterial.IsActive)
-                </label>
-            </div>
+
             <div class="form-group">
                 <label asp-for="OfitMaterial.CategoryId" class="control-label"></label>
-                <select asp-for="OfitMaterial.CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
+                <select asp-for="OfitMaterial.CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+            </div>
+
+             <div class="form-group">
+                 <label asp-for="OfitMaterial.ImageData" class="control-label"></label>
+                 <input asp-for="OfitMaterial.ImageData" class="form-control" type="file" accept="image/*"
+                     onchange="previewImage(event, 'imagePreview')" />
+                 <span asp-validation-for="OfitMaterial.ImageData" class="text-danger"></span>
+                 <img id="imagePreview" src="#" alt="Image Preview"
+                     style="display:none; max-width: 100%; height: auto;" />
+             </div>
+           
+            <div class="form-group">
+                <label asp-for="OfitMaterial.QrCodeData" class="control-label"></label>
+                <input asp-for="OfitMaterial.QrCodeData" class="form-control" type="file" accept="image/*"
+                    onchange="previewImage(event, 'qrCodePreview')" />
+                <span asp-validation-for="OfitMaterial.QrCodeData" class="text-danger"></span>
+                <img id="qrCodePreview" src="#" alt="QR Code Preview"
+                    style="display:none; max-width: 100%; height: auto;" />
             </div>
             <div class="form-group">
-                <label asp-for="OfitMaterial.CreateDate" class="control-label"></label>
-                <input asp-for="OfitMaterial.CreateDate" class="form-control" />
-                <span asp-validation-for="OfitMaterial.CreateDate" class="text-danger"></span>
+                <label asp-for="OfitMaterial.File" class="control-label"></label>
+                <input asp-for="OfitMaterial.File" class="form-control" type="file" />
+                <span asp-validation-for="OfitMaterial.File" class="text-danger"></span>
+
             </div>
-            <div class="form-group">
-                <label asp-for="OfitMaterial.WriteDate" class="control-label"></label>
-                <input asp-for="OfitMaterial.WriteDate" class="form-control" />
-                <span asp-validation-for="OfitMaterial.WriteDate" class="text-danger"></span>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="OfitMaterial.IsActive" /> @Html.DisplayNameFor(model =>
+                    model.OfitMaterial.IsActive)
+                </label>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -64,5 +74,8 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="~/js/previewImage.js"></script>
 }

@@ -1,0 +1,70 @@
+﻿@page
+@model razor_demo.Pages.OfitMaterialViews.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>OfitMaterial</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="OfitMaterial.Name" class="control-label"></label>
+                <input asp-for="OfitMaterial.Name" class="form-control" />
+                <span asp-validation-for="OfitMaterial.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfitMaterial.MaterialCode" class="control-label"></label>
+                <input asp-for="OfitMaterial.MaterialCode" class="form-control" />
+                <span asp-validation-for="OfitMaterial.MaterialCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfitMaterial.InternalCode" class="control-label"></label>
+                <input asp-for="OfitMaterial.InternalCode" class="form-control" />
+                <span asp-validation-for="OfitMaterial.InternalCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfitMaterial.Description" class="control-label"></label>
+                <input asp-for="OfitMaterial.Description" class="form-control" />
+                <span asp-validation-for="OfitMaterial.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="OfitMaterial.IsActive" /> @Html.DisplayNameFor(model => model.OfitMaterial.IsActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfitMaterial.CategoryId" class="control-label"></label>
+                <select asp-for="OfitMaterial.CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                <span asp-validation-for="OfitMaterial.CategoryId" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="OfitMaterial.Id" />
+            <div class="form-group">
+                <label asp-for="OfitMaterial.CreateDate" class="control-label"></label>
+                <input asp-for="OfitMaterial.CreateDate" class="form-control" />
+                <span asp-validation-for="OfitMaterial.CreateDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfitMaterial.WriteDate" class="control-label"></label>
+                <input asp-for="OfitMaterial.WriteDate" class="form-control" />
+                <span asp-validation-for="OfitMaterial.WriteDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

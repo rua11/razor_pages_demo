@@ -1,0 +1,91 @@
+﻿@page
+@model razor_demo.Pages.OfitCategoryViews.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>OfitCategory</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" id="category_form">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="OfitCategory.CompanyId" class="control-label"></label>
+                <select asp-for="OfitCategory.CompanyId" class="form-control" asp-items="ViewBag.CompanyId">
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="OfitCategory.Name" class="control-label"></label>
+                <input asp-for="OfitCategory.Name" class="form-control"/>
+                <span asp-validation-for="OfitCategory.Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="OfitCategory.ParentId" class="control-label"></label>
+                <select asp-for="OfitCategory.ParentId" class="form-control" asp-items="ViewBag.ParentId">
+                    <option value="">-- None --</option> <!-- Option for no selection -->
+                </select>
+                <span asp-validation-for="OfitCategory.ParentId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="OfitCategory.Type" class="control-label"></label>
+                <select asp-for="OfitCategory.Type" class="form-control" asp-items="Model.CategoryTypes">
+                </select>
+                <span asp-validation-for="OfitCategory.Type" class="text-danger"></span>
+            </div>
+
+           
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="OfitCategory.IsActive" 
+                    /> @Html.DisplayNameFor(model => model.OfitCategory.IsActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfitCategory.Description" class="control-label"></label>
+                <input asp-for="OfitCategory.Description" class="form-control" />
+                <span asp-validation-for="OfitCategory.Description" class="text-danger"></span>
+            </div>
+            
+            <input type="hidden" asp-for="OfitCategory.Id" />
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+       
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    
+    <script>
+        // Điều kiện chỉ đọc
+        var isReadOnly = @Model.IsReadOnly.ToString().ToLower();
+        debugger
+        if (isReadOnly) {
+            // Vô hiệu hóa tất cả các trường input và textarea
+            document.querySelectorAll('#category_form input, #category_form textarea').forEach(function (element) {
+                element.setAttribute('readonly', 'readonly');
+            });
+
+            // Vô hiệu hóa nút bấm
+            document.querySelectorAll('#category_form button, #category_form select').forEach(function (element) {
+                element.setAttribute('disabled', 'disabled')
+            });
+        }
+    </script>
+}

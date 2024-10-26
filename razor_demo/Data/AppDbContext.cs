@@ -9,7 +9,7 @@ namespace razor_demo.Data
 {
     public class AppDbContext : DbContext
     {
-        public AppDbContext (DbContextOptions<AppDbContext> options)
+        public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)
         {
         }
@@ -37,14 +37,14 @@ namespace razor_demo.Data
                       .OnDelete(DeleteBehavior.Cascade) // Optional: Prevent cascading delete
                       .HasConstraintName("ofit_category_category_id_fkey");
 
-                entity.Property(e => e.Type)
+                entity.Property(e => e.CategoryType)
                       .HasConversion<string>();  // Store enum as a string in the database
 
             });
 
             modelBuilder.Entity<OfitMaterial>(entity =>
             {
-               
+
                 entity.HasOne(d => d.OfitCategory)
                     .WithMany(p => p.OfitMaterials)
                     .HasForeignKey(d => d.CategoryId)

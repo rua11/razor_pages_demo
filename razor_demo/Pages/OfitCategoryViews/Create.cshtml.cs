@@ -23,8 +23,8 @@ namespace razor_demo.Pages.OfitCategoryViews
 
         public IActionResult OnGet()
         {
-        ViewData["ParentId"] = new SelectList(_context.OfitCategory, "Id", "Name");
-        CategoryTypes = new SelectList(Enum.GetValues(typeof(CategoryType1)));
+            ViewData["ParentId"] = new SelectList(_context.OfitCategory, "Id", "Name");
+            CategoryTypes = new SelectList(Enum.GetValues(typeof(CategoryType1)));
             return Page();
         }
 

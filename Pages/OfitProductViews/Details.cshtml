@@ -1,0 +1,61 @@
+﻿@page
+@model razor_demo.Pages.OfitProductViews.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>OfitProduct</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfitProduct.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfitProduct.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfitProduct.InternalCode)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfitProduct.InternalCode)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfitProduct.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfitProduct.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfitProduct.IsActive)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfitProduct.IsActive)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfitProduct.OfitCategory)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfitProduct.OfitCategory.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfitProduct.CreateDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfitProduct.CreateDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfitProduct.WriteDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfitProduct.WriteDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.OfitProduct.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
